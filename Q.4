@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'ListTile & Switch Demo',
+      home: ListTileSwitchDemo(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class ListTileSwitchDemo extends StatefulWidget {
+  @override
+  _ListTileSwitchDemoState createState() => _ListTileSwitchDemoState();
+}
+
+class _ListTileSwitchDemoState extends State<ListTileSwitchDemo> {
+
+  bool isSwitched = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("ListTile and Switch Demo"),
+      ),
+      body: ListTile(
+        leading: Icon(Icons.notifications),
+        title: Text("Enable Notifications"),
+        subtitle: Text("Turn notifications ON/OFF"),
+        trailing: Switch(
+          value: isSwitched,
+          onChanged: (value) {
+            setState(() {
+              isSwitched = value;
+            });
+          },
+        ),
+      ),
+    );
+  }
+}
